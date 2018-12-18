@@ -17,6 +17,7 @@ def print_menu
   puts "2. Choose number of tables"
   puts "3. See players in tornament"
   puts "4. See amount of tables"
+  puts "5. Remove player from tornament"
   puts "9. Exit"
 end
 
@@ -30,6 +31,8 @@ def process(selection)
       see_players
     when "4"
       see_table_amount
+    when "5"
+      remove_player
     when "9"
       exit
   end
@@ -66,6 +69,16 @@ end
 
 def see_table_amount
   puts "You currently have #{@tables} tables selected"
+end
+
+def remove_player
+  puts "Please enter the player you would like to remove"
+  input = gets.chomp
+  @players.each do |player|
+    if player == input
+      @players.delete(player)
+    end
+  end
 end
 
 interactive_menu
