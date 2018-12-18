@@ -12,21 +12,26 @@ puts "When finished press enter twice"
 
 #adds players to the tornament
 def add_player
-while true do
-player = gets.chomp
+  while true do
+    player = gets.chomp
 
-break if player.empty?
-@players << player
-puts "You now have #{@players.length} in the tornament"
-end
+    break if player.empty?
+    @players << player
+    puts "You now have #{@players.length} in the tornament"
+  end
 end
 
 #choose the tables needed
 def tables_needed
-puts "Please enter the tables required"
-input = gets.chomp
-@tables = input
+  puts "Please enter the tables required"
+  input = gets.chomp
+  @tables = input
+end
+
+def see_players
+  @players.each { |player| puts player }
 end
 
 add_player
 tables_needed
+see_players
