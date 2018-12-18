@@ -16,6 +16,8 @@ def print_menu
   puts "1. Add players"
   puts "2. Choose number of tables"
   puts "3. See players in tornament"
+  puts "4. See amount of tables"
+  puts "9. Exit"
 end
 
 def process(selection)
@@ -26,6 +28,10 @@ def process(selection)
       tables_needed
     when "3"
       see_players
+    when "4"
+      see_table_amount
+    when "9"
+      exit
   end
 end
 
@@ -37,7 +43,7 @@ end
 def add_player
   puts "Please enter the players for the tornament"
   puts "When finished press enter twice"
-  
+
   while true do
     player = gets.chomp
 
@@ -58,8 +64,8 @@ def see_players
   @players.each { |player| puts player }
 end
 
+def see_table_amount
+  puts "You currently have #{@tables} tables selected"
+end
 
-
-add_player
-tables_needed
-see_players
+interactive_menu
