@@ -20,6 +20,7 @@ def print_menu
   puts "5. Remove player from tornament"
   puts "6. Create fixture list"
   puts "7. Import players from file"
+  puts "8. Save players to file"
   puts "9. Exit"
 end
 
@@ -39,6 +40,8 @@ def process(selection)
       fixture_creator
     when "7"
       import_players
+    when "8"
+      save_players
     when "9"
       exit
   end
@@ -105,6 +108,13 @@ def import_players
   file = File.open("players.csv", "r")
   file.readlines.each do |line|
     @players << line.chomp
+  end
+end
+
+def save_players
+  file = File.open("players.csv", "w")
+  @players.each do |player|
+    file.puts player
   end
 end
 
