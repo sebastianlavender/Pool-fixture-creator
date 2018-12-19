@@ -18,6 +18,8 @@ def print_menu
   puts "3. See players in tornament"
   puts "4. See amount of tables"
   puts "5. Remove player from tornament"
+  puts "6. Create fixture list"
+  puts "7. Import players from file"
   puts "9. Exit"
 end
 
@@ -33,6 +35,10 @@ def process(selection)
       see_table_amount
     when "5"
       remove_player
+    when "6"
+      fixture_creator
+    when "7"
+      import_players
     when "9"
       exit
   end
@@ -41,6 +47,7 @@ end
 #global variables
 @players = []
 @tables = 0
+@fixture_list = []
 
 #adds players to the tornament
 def add_player
@@ -78,6 +85,26 @@ def remove_player
     if player == input
       @players.delete(player)
     end
+  end
+end
+
+def fixture_creator
+
+  @players.each_with_index do |player, index|
+    count = index + 1
+    until count == @players.length
+    @fixture_list << player
+    @fixture_list << @players[count]
+    count +=1
+    end
+  end
+  print @fixture_list.each_slice(2).to_a
+end
+
+def import_players
+  file = File.open("players.csv", "r")
+  file.readlines.each do |line|
+    @players << line.chomp
   end
 end
 
